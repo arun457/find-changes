@@ -1,19 +1,55 @@
-// question number 2
+//
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
-#define MAX 5
-int main()
+void palidromecheck(char string2[30]);
+
+void main()
 {
-    int case1[MAX] = {2, 3, 5, 4, 10}, i, sum = 0;
-    float average;
+    char string1[30];
     system("cls");
-    for (i = 0; i < MAX; i += 1)
+    printf("Enter a tsting to check: \n");
+    gets(string1);
+    // puts(string1); //input
+    palidromecheck(string1);
+}
+
+void palidromecheck(char string2[30])
+{
+    // puts(string2);
+    int i, length = 0, j, flag = 0;
+    char stringcopy[30];
+    for (i = 0; string2[i] = '\0'; i++)
     {
-        printf("Case %d = %3.2d\n", i, case1[i]);
-        sum += *(case1 + i);
+        length++; //finding length
     }
-    average = (float)(sum / MAX);
-    printf("%06.2f", average);
-    return 1;
+    printf("\n1\n");
+    printf("Length = %d", length);
+    // puts(string2);
+    j = length - 1;
+    for (i = 0; i < length; i++) //abcde stringcopy==edcba///   dad = dad
+    {
+        stringcopy[j] = string2[i]; //copying the string
+        j--;
+    }
+    puts(stringcopy);
+    for (i = 0; i < length; i++)
+    {
+        if (stringcopy[i] != string2[i])
+        {
+            flag = 1;
+        }
+        else
+        {
+            flag = 0;
+        }
+    }
+    if (flag == 1)
+    {
+        printf("The string is not palindrome.");
+    }
+    else
+    {
+        printf("The string is palindrome.");
+    }
 }
